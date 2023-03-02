@@ -1,9 +1,19 @@
 ---
 openapi: 3.0.3
+security:
+  - testAuth : []
 info:
   title: Accounts
+  description: Interact with accounts
   version: 1.0.0
-  contact: {}
+  termsOfService: https://example.com/tos
+  license:
+    name: Apache 2.0
+    url: https://opensource.org/licenses/Apache-2.0
+  contact:
+    name: Matt Ball
+    email: matt@postman.com
+    url: se.postman.com
 servers:
   - url: "{{url}}"
 paths:
@@ -20,9 +30,11 @@ paths:
               properties:
                 holder:
                   type: string
+                  description: ID of customer to be found
                   example: "{{customerId}}"
                 type:
                   type: string
+                  description: Name of account
                   example: "{{$randomBankAccountName}}"
             example:
               holder: "{{customerId}}"
@@ -30,6 +42,8 @@ paths:
       responses:
         "200":
           description: ""
+        "500":
+
   "/accounts/{accountNumber}/overview":
     get:
       summary: Overview
@@ -38,9 +52,13 @@ paths:
       responses:
         "200":
           description: ""
+        "500":
+          description: ""
     parameters:
       - name: accountNumber
+        description: Number for the account being accessed
         in: path
+        example: 12345678
         required: true
         schema:
           type: string
@@ -59,9 +77,11 @@ paths:
               properties:
                 from:
                   type: string
+                  description: Date from
                   example: "{{$randomDatePast}}"
                 to:
                   type: string
+                  description: Date to
                   example: "{{$randomDateRecent}}"
             example:
               from: "{{$randomDatePast}}"
@@ -131,8 +151,12 @@ paths:
               examples:
                 200 OK:
                   value: "{\n    \"period\": {\n        \"from\": \"{{$randomDatePast}}\",\n        \"to\": \"{{$randomDateRecent}}\"\n    },\n    \"balance\": {\n        \"opening\": {{$randomPrice}},\n        \"closing\": {{$randomPrice}}\n    },\n    \"money\": {\n        \"in\": {{$randomPrice}},\n        \"out\": {{$randomPrice}}\n    },\n    \"transactions\": [\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        }\n    ]\n}"
+        "500":
+          description: ""
     parameters:
       - name: accountNumber
+        description: Number for the account
+        example: 12345678
         in: path
         required: true
         schema:
@@ -147,8 +171,12 @@ paths:
       responses:
         "200":
           description: ""
+        "500":
+          description: ""
     parameters:
       - name: accountNumber
+        example: 12345678
+        description: Number for the account
         in: path
         required: true
         schema:

@@ -431,11 +431,39 @@
 			"id": "2f90c611-b69c-4a9a-9da3-3c564968cc7c"
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "efa1edcc-d6bc-426b-95ad-bad432748fc6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "24fb81ea-0693-423e-ad2c-321d49bc0052",
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test(\"Response time is less than 2000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"});"
+				]
+			}
+		}
+	],
 	"variable": [
 		{
-			"id": "4a902d4d-4825-423d-8d24-9f51ebeb6812",
+			"id": "a5ecb2be-4db0-40d4-9305-cfba61abf218",
 			"key": "baseUrl",
-			"value": "{{url}}",
+			"value": "https://354b9d62-bd7e-40d7-863c-7b02c5b83585.mock.pstmn.io",
 			"type": "string"
 		}
 	]
