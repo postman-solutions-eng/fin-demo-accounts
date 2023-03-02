@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "ba14ae64-9143-433d-9928-3d15a4124459",
+		"name": "Accounts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "15447492-ba14ae64-9143-433d-9928-3d15a4124459"
+	},
+	"item": [
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "{accountNumber}",
+					"item": [
+						{
+							"name": "statement",
+							"item": [
+								{
+									"name": "Date",
+									"id": "7e2850d3-357d-4aba-9af5-e0073c773b54",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"from\": \"{{$randomDatePast}}\",\n  \"to\": \"{{$randomDateRecent}}\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:accountNumber/statement/date",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":accountNumber",
+												"statement",
+												"date"
+											],
+											"variable": [
+												{
+													"key": "accountNumber",
+													"value": "laboris aute culpa anim",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Date"
+									},
+									"response": [
+										{
+											"id": "e1e23404-d012-4ccf-9390-104fafce6eda",
+											"name": "200 OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/form-urlencoded"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"from\": \"{{$randomDatePast}}\",\n  \"to\": \"{{$randomDateRecent}}\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/accounts/:accountNumber/statement/date",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"accounts",
+														":accountNumber",
+														"statement",
+														"date"
+													],
+													"variable": [
+														{
+															"key": "accountNumber",
+															"value": "laboris aute culpa anim",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Date"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"disabled": false,
+													"key": "Access-Control-Allow-Origin",
+													"value": "*",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Connection",
+													"value": "close",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Content-Encoding",
+													"value": "gzip",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Date",
+													"value": "Mon, 14 Jun 2021 14:30:25 GMT",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "ETag",
+													"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Server",
+													"value": "nginx",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Transfer-Encoding",
+													"value": "chunked",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "Vary",
+													"value": "Accept-Encoding",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "X-RateLimit-Limit",
+													"value": "120",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "X-RateLimit-Remaining",
+													"value": "119",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "X-RateLimit-Reset",
+													"value": "1623681083",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "x-srv-span",
+													"value": "v=1;s=210e5b055e5bd71e",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "x-srv-trace",
+													"value": "v=1;t=d33d68b932344fce",
+													"description": ""
+												},
+												{
+													"disabled": false,
+													"key": "x-special",
+													"value": "foobar",
+													"description": ""
+												},
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"period\": {\n        \"from\": \"{{$randomDatePast}}\",\n        \"to\": \"{{$randomDateRecent}}\"\n    },\n    \"balance\": {\n        \"opening\": {{$randomPrice}},\n        \"closing\": {{$randomPrice}}\n    },\n    \"money\": {\n        \"in\": {{$randomPrice}},\n        \"out\": {{$randomPrice}}\n    },\n    \"transactions\": [\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Latest",
+									"id": "4a099648-a54d-43ef-a045-5324b3a55ac9",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:accountNumber/statement/latest",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":accountNumber",
+												"statement",
+												"latest"
+											],
+											"variable": [
+												{
+													"key": "accountNumber",
+													"value": "laboris aute culpa anim",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Latest"
+									},
+									"response": [
+										{
+											"id": "788e291c-2384-45cf-8b32-2fd69fdd7cf8",
+											"name": "Untitled Example",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/accounts/:accountNumber/statement/latest",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"accounts",
+														":accountNumber",
+														"statement",
+														"latest"
+													],
+													"variable": [
+														{
+															"key": "accountNumber",
+															"value": "laboris aute culpa anim",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Latest"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							],
+							"id": "6a7bfc4d-e2f2-4b21-a1b5-15e8c2df772b"
+						},
+						{
+							"name": "Overview",
+							"id": "3585c91b-5dc4-4a2b-af1c-786e9f18380e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/accounts/:accountNumber/overview",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts",
+										":accountNumber",
+										"overview"
+									],
+									"variable": [
+										{
+											"key": "accountNumber",
+											"value": "laboris aute culpa anim",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Overview"
+							},
+							"response": [
+								{
+									"id": "8573b639-68e3-4956-93dd-673449a5f650",
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:accountNumber/overview",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":accountNumber",
+												"overview"
+											],
+											"variable": [
+												{
+													"key": "accountNumber",
+													"value": "laboris aute culpa anim",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Overview"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"id": "8a0629ce-e370-4fa5-be22-ccee45cf0bed"
+				},
+				{
+					"name": "Create",
+					"id": "e02319a3-87b4-4ad9-92f3-f0434b0ad7c6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"holder\": \"{{customerId}}\",\n  \"type\": \"{{$randomBankAccountName}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/accounts/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accounts",
+								"create"
+							]
+						},
+						"description": "Create"
+					},
+					"response": [
+						{
+							"id": "bf1dd1ab-92d6-4c3d-8cd3-b2eeee0e022e",
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"holder\": \"{{customerId}}\",\n  \"type\": \"{{$randomBankAccountName}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/accounts/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts",
+										"create"
+									]
+								},
+								"description": "Create"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"id": "2f90c611-b69c-4a9a-9da3-3c564968cc7c"
+		}
+	],
+	"variable": [
+		{
+			"id": "4a902d4d-4825-423d-8d24-9f51ebeb6812",
+			"key": "baseUrl",
+			"value": "{{url}}",
+			"type": "string"
+		}
+	]
+}
