@@ -23,37 +23,37 @@
 									},
 									"request": {
 										"method": "GET",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/form-urlencoded"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											}
-										],
+										"header": [],
 										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"from\": \"{{$randomDatePast}}\",\n  \"to\": \"{{$randomDateRecent}}\"\n}"
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "from",
+													"value": "{{$randomDatePast}}",
+													"type": "text"
+												},
+												{
+													"key": "to",
+													"value": "{{$randomDateRecent}}",
+													"type": "text"
+												}
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/accounts/:accountNumber/statement/date",
+											"raw": "{{baseUrl}}/accounts/{{$randomBankAccount}}/statement/date",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"accounts",
-												":accountNumber",
+												"{{$randomBankAccount}}",
 												"statement",
 												"date"
-											],
-											"variable": [
-												{
-													"key": "accountNumber",
-													"value": "laboris aute culpa anim",
-													"description": "(Required) "
-												}
 											]
 										},
 										"description": "Date"
@@ -207,22 +207,15 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{baseUrl}}/accounts/:accountNumber/statement/latest",
+											"raw": "{{baseUrl}}/accounts/{{$randomBankAccount}}/statement/latest",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"accounts",
-												":accountNumber",
+												"{{$randomBankAccount}}",
 												"statement",
 												"latest"
-											],
-											"variable": [
-												{
-													"key": "accountNumber",
-													"value": "laboris aute culpa anim",
-													"description": "(Required) "
-												}
 											]
 										},
 										"description": "Latest"
@@ -230,7 +223,7 @@
 									"response": [
 										{
 											"id": "788e291c-2384-45cf-8b32-2fd69fdd7cf8",
-											"name": "Untitled Example",
+											"name": "200 OK",
 											"originalRequest": {
 												"method": "GET",
 												"header": [],
@@ -304,7 +297,7 @@
 							"response": [
 								{
 									"id": "8573b639-68e3-4956-93dd-673449a5f650",
-									"name": "Untitled Example",
+									"name": "200 OK",
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
@@ -383,7 +376,7 @@
 					"response": [
 						{
 							"id": "bf1dd1ab-92d6-4c3d-8cd3-b2eeee0e022e",
-							"name": "Untitled Example",
+							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -435,7 +428,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "efa1edcc-d6bc-426b-95ad-bad432748fc6",
+				"id": "096e3aa7-329d-4205-a887-a16a2056159c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -445,7 +438,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "24fb81ea-0693-423e-ad2c-321d49bc0052",
+				"id": "ec7d1031-31a4-43c8-9b91-ebe2f94b3c6e",
 				"type": "text/javascript",
 				"exec": [
 					"pm.test(\"Status code is 200\", function () {",
@@ -461,9 +454,9 @@
 	],
 	"variable": [
 		{
-			"id": "a5ecb2be-4db0-40d4-9305-cfba61abf218",
+			"id": "f8d409ec-bd8b-475a-af11-196d50de1ad9",
 			"key": "baseUrl",
-			"value": "https://354b9d62-bd7e-40d7-863c-7b02c5b83585.mock.pstmn.io",
+			"value": "https://354b9d62-bd7e-40d7-863c-7b02c5b83585.mock.pstmn.io/",
 			"type": "string"
 		}
 	]
