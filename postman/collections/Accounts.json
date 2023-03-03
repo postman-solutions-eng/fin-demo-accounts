@@ -67,7 +67,9 @@
 												"header": [
 													{
 														"key": "Content-Type",
-														"value": "application/form-urlencoded"
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
 													},
 													{
 														"key": "Accept",
@@ -76,7 +78,12 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"from\": \"{{$randomDatePast}}\",\n  \"to\": \"{{$randomDateRecent}}\"\n}"
+													"raw": "{\n  \"from\": \"{{$randomDatePast}}\",\n  \"to\": \"{{$randomDateRecent}}\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
 												},
 												"url": {
 													"raw": "{{baseUrl}}/accounts/:accountNumber/statement/date",
@@ -101,7 +108,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "text",
+											"_postman_previewlanguage": "json",
 											"header": [
 												{
 													"disabled": false,
@@ -189,7 +196,10 @@
 												},
 												{
 													"key": "Content-Type",
-													"value": "text/plain"
+													"name": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
 												}
 											],
 											"cookie": [],

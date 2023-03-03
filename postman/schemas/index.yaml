@@ -25,43 +25,28 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              type: object
-              properties:
-                holder:
-                  type: string
-                  description: ID of customer to be found
-                  example: "{{customerId}}"
-                type:
-                  type: string
-                  description: Name of account
-                  example: "{{$randomBankAccountName}}"
+            "schema":
+              "$ref": "#/components/schemas/Account"
             example:
-              holder: "{{customerId}}"
+              holder: "{{$randomUUID}}"
               type: "{{$randomBankAccountName}}"
       responses:
         "200":
           description: ""
         "500":
-
-  "/accounts/{accountNumber}/overview":
+          description: ""
+  /accounts/{accountNumber}/overview:
     get:
       summary: Overview
       description: Overview
       operationId: overview
+      parameters:
+        - $ref: "#/components/parameters/accountNumber"
       responses:
         "200":
           description: ""
         "500":
           description: ""
-    parameters:
-      - name: accountNumber
-        description: Number for the account being accessed
-        in: path
-        example: 12345678
-        required: true
-        schema:
-          type: string
   "/accounts/{accountNumber}/statement/date":
     get:
       tags:
@@ -73,94 +58,22 @@ paths:
         content:
           application/form-urlencoded:
             schema:
-              type: object
-              properties:
-                from:
-                  type: string
-                  description: Date from
-                  example: "{{$randomDatePast}}"
-                to:
-                  type: string
-                  description: Date to
-                  example: "{{$randomDateRecent}}"
+              $ref: "#/components/schemas/DateRange"
             example:
               from: "{{$randomDatePast}}"
               to: "{{$randomDateRecent}}"
       responses:
         "200":
           description: 200 OK
-          headers:
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: "*"
-            Connection:
-              schema:
-                type: string
-                example: close
-            Content-Encoding:
-              schema:
-                type: string
-                example: gzip
-            Date:
-              schema:
-                type: string
-                example: "Mon, 14 Jun 2021 14:30:25 GMT"
-            ETag:
-              schema:
-                type: string
-                example: "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
-            Server:
-              schema:
-                type: string
-                example: nginx
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Vary:
-              schema:
-                type: string
-                example: Accept-Encoding
-            X-RateLimit-Limit:
-              schema:
-                type: string
-                example: "120"
-            X-RateLimit-Remaining:
-              schema:
-                type: string
-                example: "119"
-            X-RateLimit-Reset:
-              schema:
-                type: string
-                example: "1623681083"
-            x-srv-span:
-              schema:
-                type: string
-                example: v=1;s=210e5b055e5bd71e
-            x-srv-trace:
-              schema:
-                type: string
-                example: v=1;t=d33d68b932344fce
-            x-special:
-              schema:
-                type: string
-                example: foobar
           content:
-            text/plain:
+            application/json:
               examples:
                 200 OK:
                   value: "{\n    \"period\": {\n        \"from\": \"{{$randomDatePast}}\",\n        \"to\": \"{{$randomDateRecent}}\"\n    },\n    \"balance\": {\n        \"opening\": {{$randomPrice}},\n        \"closing\": {{$randomPrice}}\n    },\n    \"money\": {\n        \"in\": {{$randomPrice}},\n        \"out\": {{$randomPrice}}\n    },\n    \"transactions\": [\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        },\n        {\n            \"date\": \"{{$randomDateRecent}}\",\n            \"description\": \"{{$randomCompanyName}}\",\n            \"type\": \"{{$randomTransactionType}}\",\n            \"amount\": {{$randomPrice}},\n            \"balance\": {{$randomPrice}}\n        }\n    ]\n}"
         "500":
           description: ""
     parameters:
-      - name: accountNumber
-        description: Number for the account
-        example: 12345678
-        in: path
-        required: true
-        schema:
-          type: string
+      - $ref: "#/components/parameters/accountNumber"
   "/accounts/{accountNumber}/statement/latest":
     get:
       tags:
@@ -174,12 +87,45 @@ paths:
         "500":
           description: ""
     parameters:
-      - name: accountNumber
-        example: 12345678
-        description: Number for the account
-        in: path
-        required: true
-        schema:
+      - $ref: "#/components/parameters/accountNumber"
+components:
+  schemas:
+    Account:
+      type: object
+      description: Details for an account
+      properties:
+        holder:
           type: string
+          description: ID of customer
+          example: "{{$randomUUID}}"
+        type:
+          type: string
+          description: Name of account
+          example: "{{$randomBankAccountName}}"
+    DateRange:
+      type: object
+      description: Provide a date range
+      properties:
+        from:
+          type: string
+          description: Date from
+          example: "{{$randomDatePast}}"
+        to:
+          type: string
+          description: Date to
+          example: "{{$randomDateRecent}}"
+  parameters:
+    accountNumber:
+      name: accountNumber
+      description: Number for the account being accessed
+      in: path
+      example: 12345678
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    testAuth:
+      type: http
+      scheme: basic
 tags:
   - name: Statement
