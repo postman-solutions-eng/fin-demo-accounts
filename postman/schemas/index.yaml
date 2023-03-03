@@ -15,7 +15,7 @@ info:
     email: matt@postman.com
     url: se.postman.com
 servers:
-  - url: "{{url}}"
+  - url: https://553368b7-c39b-44a7-9bdc-b3df7563dfc6.mock.pstmn.io
 paths:
   /accounts/create:
     post:
