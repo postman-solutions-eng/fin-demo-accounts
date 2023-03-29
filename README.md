@@ -1,1 +1,1 @@
-# discover-accounts
+# accounts
